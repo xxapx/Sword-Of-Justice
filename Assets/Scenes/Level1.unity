@@ -248,7 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 778308494}
   - component: {fileID: 778308493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 1085587244}
   - component: {fileID: 1085587249}
   - component: {fileID: 1085587250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3116,6 +3116,7 @@ GameObject:
   - component: {fileID: 1681335009}
   - component: {fileID: 1681335010}
   - component: {fileID: 1681335011}
+  - component: {fileID: 1681335012}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3327,7 +3328,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681335000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ac3bbd91739ba94d8639be92e1cdc1a, type: 3}
   m_Name: 
@@ -3361,14 +3362,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681335000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64c2f9fe6b489e46920533c0869e043, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e18bd7293041824aafee3f47464d6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1681335008}
-  animator: {fileID: 1681335001}
-  runSpeed: 75
+  controller: {fileID: 0}
+  animator: {fileID: 0}
+  runSpeed: 40
 --- !u!114 &1681335010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3485,6 +3486,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1681335012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681335000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b40f1d32542e349b7a13e14ef8b94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 18
+  jumpForce: 25
+  moveInput: 0
+  groundCheck: {fileID: 1929656575}
+  checkRadius: 0.5
+  whatisGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1690885827
 GameObject:
   m_ObjectHideFlags: 0
