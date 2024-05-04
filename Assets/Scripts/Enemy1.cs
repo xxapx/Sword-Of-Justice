@@ -30,7 +30,10 @@ public class Enemy1 : MonoBehaviour
     void Dead(){
         animator.SetBool("Death", true);
 
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 0.01f);
+        GetComponent<BoxCollider2D>().offset = new Vector2(0f, 0.06f);
+
+        //GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
     }
    

@@ -27,7 +27,12 @@ public class PlayerMovement : MonoBehaviour
     {
        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-       animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+       if(jump==false && horizontalMove > 0f)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        }
+
+      // animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
        /*rb2D.velocity = new Vector2(x, rb2D.velocity.y);
 
