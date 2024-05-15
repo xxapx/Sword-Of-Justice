@@ -16,6 +16,10 @@ public class Enemy1 : MonoBehaviour
     public int maxHeath = 100;
     int currentHealth;
 
+    bool hurt = false;
+
+    private bool isfacingRight = true;
+
 
     void Start()
     {
@@ -25,19 +29,25 @@ public class Enemy1 : MonoBehaviour
 
     private void Update()
     {
-        float distToPlayer = Vector2.Distance(transform.position, player.position);
         
-        if(distToPlayer < agroRange)
+        animator.SetBool("Run", false);
+        float distToPlayer = Vector2.Distance(transform.position, player.position);
+        print("Distance:  " + distToPlayer);
+
+        if (distToPlayer < agroRange && distToPlayer >3.12f && hurt == false)
         {
             ChasePlayer();
+            //print("Distance:  " + distToPlayer);
         }
-        else
+        else if(distToPlayer == 3.12f || distToPlayer > agroRange) 
         {
-
+            stopChasingPlayer();
+            
         }
     }
 
     public void takeDamage(int damage){
+        hurt = true;
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
@@ -61,15 +71,38 @@ public class Enemy1 : MonoBehaviour
 
     void ChasePlayer()
     {
-        if(transform.position.x < player.position.x)
+        animator.SetBool("Run", true);
+        if (transform.position.x < player.position.x)
         {
             rb2d.velocity = new Vector2(moveSpeed, 0);
-        }else if(transform.position.x > player.position.x)
+            if (isfacingRight == true)
+            {
+                flip();
+            }
+        }
+        else if(transform.position.x > player.position.x)
         {
             rb2d.velocity = new Vector2(-moveSpeed, 0);
+            
+            if(isfacingRight == false) {
+                flip();
+            }
         }
     }
 
+    void stopChasingPlayer()
+    {
+        rb2d.velocity = new Vector2(0, 0);
+        animator.SetBool("Run", false);
+        hurt = false;
+    }
 
+    void flip()
+    {
+        isfacingRight = !isfacingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
 
 }
