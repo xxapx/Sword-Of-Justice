@@ -6,8 +6,10 @@ public class Enemy1 : MonoBehaviour
 {
 
     [SerializeField] Transform player;
-    [SerializeField] float agroRange;
+    /*[SerializeField]*/ float agroRange = 20.5f;
     [SerializeField] float moveSpeed;
+
+    [SerializeField] Transform castPoint;
 
     Rigidbody2D rb2d;
 
@@ -32,7 +34,8 @@ public class Enemy1 : MonoBehaviour
         
         animator.SetBool("Run", false);
         float distToPlayer = Vector2.Distance(transform.position, player.position);
-        print("Distance:  " + distToPlayer);
+        print("Distance:  " + distToPlayer + "\nAgro RAnge: " + agroRange);
+      
 
         if (distToPlayer < agroRange && distToPlayer >3.12f && hurt == false)
         {
@@ -41,7 +44,14 @@ public class Enemy1 : MonoBehaviour
         }
         else if(distToPlayer == 3.12f || distToPlayer > agroRange) 
         {
-            stopChasingPlayer();
+            if (hurt == true)
+            {
+                agroRange = 0f;
+                stopChasingPlayer();
+            }
+            else {
+                stopChasingPlayer();
+            }
             
         }
     }
@@ -51,6 +61,8 @@ public class Enemy1 : MonoBehaviour
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
+
+        //agroRange = 0f;
 
          if (currentHealth <= 0){
             Dead();
@@ -67,7 +79,19 @@ public class Enemy1 : MonoBehaviour
         //GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
     }
-   
+
+    /*
+    bool canSeePlayer(float distance)
+    {
+        bool val = false;
+        float castDistance = distance;
+
+        Vector2 endPosition = castPoint.position + Vector3.right * distance;
+        RaycastHit2D hit = Physics2D.Linecast(castPoint.position, endPosition, 1 << LayerMask.NameToLayer("Player"));
+
+
+    }
+    */
 
     void ChasePlayer()
     {
@@ -90,11 +114,16 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
-    void stopChasingPlayer()
+    IEnumerator stopChasingPlayer()
     {
         rb2d.velocity = new Vector2(0, 0);
         animator.SetBool("Run", false);
         hurt = false;
+        if (agroRange == 0)
+        {
+            yield return new WaitForSeconds(2);
+            agroRange = 20.5f;
+        }
     }
 
     void flip()

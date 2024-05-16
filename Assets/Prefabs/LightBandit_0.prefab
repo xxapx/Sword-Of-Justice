@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  agroRange: 6.41
+  agroRange: 19.9
   moveSpeed: 13
+  castPoint: {fileID: 0}
   animator: {fileID: 6496809278780740597}
   maxHeath: 100
