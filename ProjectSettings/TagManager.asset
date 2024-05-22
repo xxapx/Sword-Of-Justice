@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -47,4 +48,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2207764293
+    locked: 0
+  - name: Water
+    uniqueID: 11330041
     locked: 0
