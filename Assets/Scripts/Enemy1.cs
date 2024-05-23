@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
 
     [SerializeField] Transform player;
-    /*[SerializeField]*/ float agroRange = 20.5f;
+    [SerializeField] float agroRange = 20.5f;
     [SerializeField] float moveSpeed;
 
     [SerializeField] Transform castPoint;
@@ -18,7 +16,7 @@ public class Enemy1 : MonoBehaviour
     public int maxHeath = 100;
     int currentHealth;
 
-    bool hurt = false;
+    public bool hurt = false;
 
     private bool isfacingRight = true;
 
@@ -43,12 +41,20 @@ public class Enemy1 : MonoBehaviour
             ChasePlayer();
             
         }
-        else if (distToPlayer < 6f || distToPlayer > agroRange)
+        else if (distToPlayer < 4f || distToPlayer > agroRange)
+        {
+            Invoke("stopChasingPlayer()", 0.5f);
+            /*if(GetComponent<PlayerDamaged>().deadTrue == false)
+            {
+                
+            }*/
+   
+            GetComponent<EnemyAttack>().AttackPlayer(1);
+        }
+        else if (hurt == true)
         {
             stopChasingPlayer();
-        }else  // if (hurt == true)
-        {
-            stopChasingPlayer();
+            Invoke("GetComponent<EnemyAttack>().AttackPlayer(1)", 0.5f);
         }
 
 
@@ -66,6 +72,7 @@ public class Enemy1 : MonoBehaviour
 
          if (currentHealth <= 0){
             Dead();
+
         }
     }
 
