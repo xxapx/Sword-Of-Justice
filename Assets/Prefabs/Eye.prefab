@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2857632612003585419}
   - component: {fileID: 4368908962670395303}
   - component: {fileID: 8956258866415126676}
+  - component: {fileID: 8499254405699652524}
   m_Layer: 7
   m_Name: Eye
   m_TagString: Enemy
@@ -261,10 +262,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d59de95e4089904fbdcad0eacf3a849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  val: 0
   animator: {fileID: 4673743635298516887}
   player: {fileID: 0}
   agroRange: 10
-  chaseSpeed: 5
   castPos: {fileID: 2572152786268587175}
   baseCastDist: 1
   moveSpeed: 3.5
+  velocityX: 0
+--- !u!114 &8499254405699652524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724319920016227012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6083cce9e34123244a34473fe97087fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  attackRate: 4

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFightScript : MonoBehaviour
@@ -10,8 +8,6 @@ public class PlayerFightScript : MonoBehaviour
     public Transform AttackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-
-    public int attackDMG = 25;
 
     public float attackRate=2f;
     float nextAttackTime = 0f;
@@ -31,8 +27,9 @@ public class PlayerFightScript : MonoBehaviour
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
 
+
         foreach(Collider2D enemy in hitEnemies){
-            enemy.GetComponent<Enemy1>().takeDamage(attackDMG);
+            enemy.GetComponent<EnemyScript>().takeDamage();
         }
         
     }

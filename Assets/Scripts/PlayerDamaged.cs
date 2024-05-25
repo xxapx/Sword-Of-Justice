@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerDamaged : MonoBehaviour
 {
     int PlayerMaxHealth = 3;
-    int Health = 3;
+    int Health = 6;
     int currentHealth;
     bool hurt = false;
 
+    public bool isDead = false;
+
     [SerializeField] public Animator animator;
 
-    public bool deadTrue;
 
 
 
@@ -20,34 +21,31 @@ public class PlayerDamaged : MonoBehaviour
         currentHealth = Health;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public bool takeDamage(int damage)
     {
+        
         if (currentHealth > 0)
         {
             hurt = true;
             currentHealth -= damage;
-
+            Debug.Log("Damage current health:  " + currentHealth);
             animator.SetTrigger("Hurt");
-            deadTrue = false;
+
         }
 
-        if (currentHealth <= 0)
-        {
+        if (currentHealth <= 0) { 
             Dead();
-            deadTrue = true;
+            isDead = true;
+            GetComponent<PlayerControl>().enabled = false;
+            GetComponent<PlayerFightScript>().enabled = false;
         }
-        return deadTrue;
+
+        return isDead;
     }
 
     void Dead()
     {
+        Debug.Log("dead");
         animator.SetBool("Death", true);
     }
 }

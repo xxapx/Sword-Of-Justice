@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Water
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Enemy
   - Ground
   - Water
-  - 
-  - 
+  - In Front of Player
+  - UI1
   - 
   - 
   - 
@@ -54,4 +55,10 @@ TagManager:
     locked: 0
   - name: Water
     uniqueID: 11330041
+    locked: 0
+  - name: In front of player
+    uniqueID: 3787314745
+    locked: 0
+  - name: UI1
+    uniqueID: 1843720151
     locked: 0

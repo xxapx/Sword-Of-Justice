@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -8,27 +6,22 @@ public class EnemyScript : MonoBehaviour
     public bool val;
     [SerializeField] public Animator animator;
 
-    //Take Damage
-    bool hurt = false;
-
     //Player chase
     [SerializeField] Transform player;
     [SerializeField] float agroRange;
-    //[SerializeField] float chaseSpeed;
 
 
 
     //Move,Edge & Wall Detection
-    const string LEFT = "left";
-    const string RIGHT = "right";
     bool isfacingRight;
-    string facingDirection;
 
     [SerializeField] Transform castPos;
     [SerializeField] float baseCastDist;
         
     Rigidbody2D rb2d;
     public float moveSpeed;
+
+    public float velocityX;
     
     
 
@@ -38,46 +31,39 @@ public class EnemyScript : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    
-    void Update()
-    {
-        
-
-    }
-
-
-    
-
 
 
     private void FixedUpdate()
     {
         
-        float velocityX = moveSpeed;
+        velocityX = moveSpeed;
 
         if(isfacingRight == true)
         {
             velocityX = -moveSpeed;
         }
+
+        //Enemy move
+        rb2d.velocity = new Vector2(velocityX, rb2d.velocity.y);
+        
+
         //distance from player
         float distToPlayer = Mathf.Abs(transform.position.x - player.position.x);
+        
         isHittingWall();
         isNearEdge();
-        if (distToPlayer < agroRange && hurt == false && val==false)
+        
+        if (distToPlayer < agroRange && val ==false)
         {
+         
+            ChasePlayer(moveSpeed);
             
-            if (val == false)
-            {
-                ChasePlayer(velocityX);
-            }
-            
-            Debug.Log("Val in 1st if  " + val);
         }
         else if(isHittingWall() || isNearEdge())
         {
             
-            stopChasingPlayer(velocityX);
-            if (facingDirection == LEFT)
+            stopChasingPlayer();
+            if (isfacingRight == false)
             {
                 flip();
             }
@@ -86,20 +72,17 @@ public class EnemyScript : MonoBehaviour
                 flip();
             }
         }
-
-
-        //Enemy move
-        rb2d.velocity = new Vector2(velocityX, rb2d.velocity.y);
+       
     }
 
-
+    //Chase player
     void ChasePlayer(float chaseSpeed)
     {
-
-        //animator.SetBool("Run", true);
+        chaseSpeed += 6.5f;
+        animator.SetBool("Chase", true);
         if (transform.position.x < player.position.x)
         {
-            rb2d.velocity = new Vector2(chaseSpeed + 3, 0);
+            rb2d.velocity = new Vector2(chaseSpeed, 0);
             if (isfacingRight == true)
             {
                 flip();
@@ -107,22 +90,20 @@ public class EnemyScript : MonoBehaviour
         }
         else if (transform.position.x > player.position.x)
         {
-            rb2d.velocity = new Vector2(-chaseSpeed +3, 0);
+            rb2d.velocity = new Vector2(-chaseSpeed, 0);
 
             if (isfacingRight == false)
             {
                 flip();
             }
         }
+        
     }
 
-    void stopChasingPlayer(float speed)
+    public void stopChasingPlayer()
     {
-        rb2d.velocity = new Vector2(speed, 0);
-        // animator.SetBool("Run", false);
-        hurt = false;
-        
-
+        rb2d.velocity = new Vector2(velocityX, 0);
+        animator.SetBool("Chase", false);
     }
 
 
@@ -134,7 +115,7 @@ public class EnemyScript : MonoBehaviour
 
         float castDist = baseCastDist;
 
-        if(facingDirection == LEFT)
+        if(isfacingRight == false)
         {
             castDist = -baseCastDist;
         }
@@ -159,7 +140,7 @@ public class EnemyScript : MonoBehaviour
         return val;
     }
 
-
+    //Check if enemy is near the edge
     bool isNearEdge()
     {
         val = false;
@@ -181,6 +162,23 @@ public class EnemyScript : MonoBehaviour
         }
         
         return val;
+    }
+
+
+
+    //Take damage by player
+    public void takeDamage()
+    {
+        stopChasingPlayer();
+        animator.SetBool("Death", true);
+
+        Invoke("DestroyEnemy", 0.3f);
+        //this.enabled = false;
+        
+    }
+    
+    public void DestroyEnemy() {
+        Destroy(gameObject);
     }
 
 
