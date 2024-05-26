@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
     public GameObject Player;
-
+    public AudioSource Check;
     SpriteRenderer spriteRenderer;
     public Sprite passive, active;
 
@@ -18,8 +16,10 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Check.Play();
             Player.GetComponent<PlayerDamaged>().CheckpointUpdate(transform.position);
             spriteRenderer.sprite = active;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 

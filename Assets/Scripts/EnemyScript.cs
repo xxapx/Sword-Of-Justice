@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+   
 
     public bool val;
     [SerializeField] public Animator animator;
@@ -55,7 +56,8 @@ public class EnemyScript : MonoBehaviour
         
         if (distToPlayer < agroRange && val ==false)
         {
-         
+
+            
             ChasePlayer(moveSpeed);
             
         }
@@ -78,11 +80,14 @@ public class EnemyScript : MonoBehaviour
     //Chase player
     void ChasePlayer(float chaseSpeed)
     {
+        
         chaseSpeed += 6.5f;
         animator.SetBool("Chase", true);
         if (transform.position.x < player.position.x)
         {
+            
             rb2d.velocity = new Vector2(chaseSpeed, 0);
+            
             if (isfacingRight == true)
             {
                 flip();
@@ -90,6 +95,7 @@ public class EnemyScript : MonoBehaviour
         }
         else if (transform.position.x > player.position.x)
         {
+
             rb2d.velocity = new Vector2(-chaseSpeed, 0);
 
             if (isfacingRight == false)
@@ -102,6 +108,7 @@ public class EnemyScript : MonoBehaviour
 
     public void stopChasingPlayer()
     {
+        
         rb2d.velocity = new Vector2(velocityX, 0);
         animator.SetBool("Chase", false);
     }

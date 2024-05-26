@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d59de95e4089904fbdcad0eacf3a849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Wings: {fileID: 0}
   val: 0
   animator: {fileID: 4673743635298516887}
   player: {fileID: 0}

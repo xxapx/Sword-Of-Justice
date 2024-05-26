@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Water
   - UI
+  - Stones
+  - Heal
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Stones
+    uniqueID: 2776622335
     locked: 0
   - name: Player
     uniqueID: 2207764293

@@ -267,10 +267,10 @@ MonoBehaviour:
   m_text: 'Monsters have taken over the world.
 
     Kill them all and collect all
-    5 stones to save it.'
+    five stones to save it.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 55a1b5b06fc2df3469ae07d2db706944, type: 2}
-  m_sharedMaterial: {fileID: 300603156177272480, guid: 55a1b5b06fc2df3469ae07d2db706944, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f92c5fbe23980a6488190a2952b86dc3, type: 2}
+  m_sharedMaterial: {fileID: 5424755170652926480, guid: f92c5fbe23980a6488190a2952b86dc3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -413,8 +413,8 @@ MonoBehaviour:
 
     Left clicK - AttacK'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 55a1b5b06fc2df3469ae07d2db706944, type: 2}
-  m_sharedMaterial: {fileID: 300603156177272480, guid: 55a1b5b06fc2df3469ae07d2db706944, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f92c5fbe23980a6488190a2952b86dc3, type: 2}
+  m_sharedMaterial: {fileID: 5424755170652926480, guid: f92c5fbe23980a6488190a2952b86dc3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1792,6 +1792,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1e2a87c9f325a40b0686309db7691e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  LevelFinishMenu: {fileID: 0}
+  PauseButton: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &1568711644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +1961,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7d6839d5afea084a9cf083d39c023b5, type: 3}
+    m_Font: {fileID: 12800000, guid: cfd1dfe0f7e9dd94aa46d7ba56b137a5, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
