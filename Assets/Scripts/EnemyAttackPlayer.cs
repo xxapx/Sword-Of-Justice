@@ -23,14 +23,8 @@ public class EnemyAttackPlayer : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Player.GetComponent<PlayerDamaged>().isDead == false)
-            {
-                Player.GetComponent<PlayerDamaged>().takeDamage(1);
-            }
-            else
-            {
-                this.enabled = false;
-            }
+            Player.GetComponent<PlayerDamaged>().takeDamage(1);
+            
         }
     }
 }

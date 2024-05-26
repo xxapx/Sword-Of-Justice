@@ -169,11 +169,12 @@ public class EnemyScript : MonoBehaviour
     //Take damage by player
     public void takeDamage()
     {
+        GetComponent<EnemyAttackPlayer>().enabled = false;
         stopChasingPlayer();
         animator.SetBool("Death", true);
 
         Invoke("DestroyEnemy", 0.3f);
-        //this.enabled = false;
+        
         
     }
     

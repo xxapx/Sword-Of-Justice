@@ -14,7 +14,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - Clouds
+  - Checkpoint
   - Enemy
   - Ground
   - Water

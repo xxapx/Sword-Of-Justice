@@ -5,7 +5,9 @@ public class SceneHandler : MonoBehaviour
 {
 
     public GameObject PauseMenu;
-    
+    public GameObject LevelFinishMenu;
+    public GameObject PauseButton;
+    [SerializeField] GameObject Player;
 
 
     //Changes the scene based on ID given in the editor
@@ -20,6 +22,7 @@ public class SceneHandler : MonoBehaviour
     {
         PauseMenu.SetActive(true);
         Time.timeScale = 0;
+        PauseButton.SetActive(false);    
     }
 
     //Is called if continue button on pause screen is pressed
@@ -27,5 +30,7 @@ public class SceneHandler : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
+        PauseButton.SetActive(true);
     }
+
 }
