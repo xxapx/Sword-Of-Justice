@@ -9,6 +9,7 @@ TagManager:
   - UI
   - Stones
   - Heal
+  - Lava
   layers:
   - Default
   - TransparentFX
@@ -60,6 +61,9 @@ TagManager:
     locked: 0
   - name: Water
     uniqueID: 11330041
+    locked: 0
+  - name: Lava
+    uniqueID: 1811920801
     locked: 0
   - name: In front of player
     uniqueID: 3787314745

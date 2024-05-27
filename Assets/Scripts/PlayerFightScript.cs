@@ -3,7 +3,10 @@ using UnityEngine;
 public class PlayerFightScript : MonoBehaviour
 {
 
-    [SerializeField] public Animator animatorAttack;
+    [SerializeField] Animator animatorAttack;
+
+    public AudioSource Sword;
+
 
     public Transform AttackPoint;
     public float attackRange = 0.5f;
@@ -24,7 +27,7 @@ public class PlayerFightScript : MonoBehaviour
 
     void Attack(){
         animatorAttack.SetTrigger("Attack");
-
+        Sword.Play();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
 
 

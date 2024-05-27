@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 public class PlayerDamaged : MonoBehaviour
 {
 
+    public AudioSource[] SRC;
+
     Vector2 checkpointPos;
 
     //Player's health
@@ -54,8 +56,12 @@ public class PlayerDamaged : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        currentHealth -= damage;
-        animator.SetTrigger("Hurt");
+            currentHealth -= damage;
+            animator.SetTrigger("Hurt");
+            if(currentHealth > 0)
+            {
+                SRC[0].Play();
+            }
             if (currentHealth == 3)
             {
                 Heart4.SetActive(false);
@@ -74,18 +80,19 @@ public class PlayerDamaged : MonoBehaviour
             }
        
 
-        if (currentHealth <= 0) {
+            if (currentHealth <= 0) {
             
-            Dead();
-            disablePlayerControls();
+                Dead();
+                disablePlayerControls();
 
-        }
+            }
                 
     }
 
 
     void Dead()
     {
+        SRC[1].Play();
         disablePlayerControls();
         
         animator.SetBool("Death", true);
@@ -124,6 +131,9 @@ public class PlayerDamaged : MonoBehaviour
     }
 
 
+
+
+
     //player dies on collition with water
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -153,7 +163,7 @@ public class PlayerDamaged : MonoBehaviour
 
 
     //Disables player scripts
-    void disablePlayerControls()
+    public void disablePlayerControls()
     {
         GetComponent<PlayerControl>().enabled = false;
         GetComponent<PlayerFightScript>().enabled = false;

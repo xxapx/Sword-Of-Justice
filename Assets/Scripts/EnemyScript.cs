@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-   
+
+    public AudioSource Death;
 
     public bool val;
     [SerializeField] public Animator animator;
@@ -176,6 +177,7 @@ public class EnemyScript : MonoBehaviour
     //Take damage by player
     public void takeDamage()
     {
+        Death.Play();
         GetComponent<EnemyAttackPlayer>().enabled = false;
         stopChasingPlayer();
         animator.SetBool("Death", true);

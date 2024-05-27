@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
 
-    public AudioSource[] audioSRC;
+    public AudioSource Jump;
 
     public Animator animator;
 
@@ -45,18 +45,16 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps>0) {
             rb.velocity = Vector2.up * jumpForce;
             animator.SetBool("isJumping", true);
-            audioSRC[1].Play();
-            audioSRC[0].Stop();
+            Jump.Play();
+            
             extraJumps--;
         }else if (Input.GetKeyDown(KeyCode.Space) && extraJumps==0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
             animator.SetBool("isJumping", true);
         }
-        if (moveInput == 0)
-        {
-            audioSRC[0].Play();
-        }
+        
+        
 
     }
 
