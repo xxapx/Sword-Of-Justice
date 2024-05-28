@@ -10,7 +10,6 @@ public class PlayerDamaged : MonoBehaviour
     Vector2 checkpointPos;
 
     //Player's health
-    int PlayerMaxHealth =4;
     int Health = 4;
     int currentHealth;
 
@@ -56,36 +55,30 @@ public class PlayerDamaged : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-            currentHealth -= damage;
-            animator.SetTrigger("Hurt");
-            if(currentHealth > 0)
-            {
-                SRC[0].Play();
-            }
-            if (currentHealth == 3)
-            {
-                Heart4.SetActive(false);
-            }
-            else if (currentHealth == 2)
-            {
-                Heart3.SetActive(false);
-            }
-            else if (currentHealth == 1)
-            {
-                Heart2.SetActive(false);
-            }
-            else if (currentHealth == 0)
-            {
-                Heart1.SetActive(false);
-            }
-       
+         currentHealth -= damage;
+         animator.SetTrigger("Hurt");
 
-            if (currentHealth <= 0) {
-            
-                Dead();
-                disablePlayerControls();
-
-            }
+         if (currentHealth == 3)
+         {
+             SRC[0].Play();
+             Heart4.SetActive(false);
+         }
+         else if (currentHealth == 2)
+         {
+             SRC[0].Play();
+             Heart3.SetActive(false);
+         }
+         else if (currentHealth == 1)
+         {
+             SRC[0].Play();
+             Heart2.SetActive(false);
+         }
+         else if (currentHealth <= 0)
+         {
+             Heart1.SetActive(false);
+             Dead();
+             disablePlayerControls();
+         }
                 
     }
 
@@ -97,10 +90,7 @@ public class PlayerDamaged : MonoBehaviour
         
         animator.SetBool("Death", true);
 
-        Debug.Log(PlayerMaxHealth);
-        
         disablePlayerControls();
-            
         StartCoroutine(stopDeathAnimation(0.8f));
 
         gameOver();
@@ -130,10 +120,6 @@ public class PlayerDamaged : MonoBehaviour
 
     }
 
-
-
-
-
     //player dies on collition with water
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -160,7 +146,6 @@ public class PlayerDamaged : MonoBehaviour
         GameOverMenu.SetActive(true);
         
     }
-
 
     //Disables player scripts
     public void disablePlayerControls()

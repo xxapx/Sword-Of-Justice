@@ -15,10 +15,6 @@ public class HealPlayer : MonoBehaviour
                 Player.GetComponent<PlayerDamaged>().HealPlayer();
                 this.gameObject.SetActive(false);
             }
-           
-            
-            
         }
     }
-
 }

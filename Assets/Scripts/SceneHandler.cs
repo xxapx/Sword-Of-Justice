@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//using static UnityEditor.PlayerSettings;
 
 public class SceneHandler : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class SceneHandler : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject LevelFinishMenu;
     public GameObject PauseButton;
-    [SerializeField] GameObject Player;
 
 
 

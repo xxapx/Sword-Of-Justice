@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-
     public AudioSource Jump;
 
     public Animator animator;
-
 
     public float speed;
     public float jumpForce;
@@ -19,12 +14,10 @@ public class PlayerControl : MonoBehaviour
 
     private bool isfacingRight = true;
 
-
     private bool isGrounded;
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatisGround;
-
 
     private int extraJumps;
 
@@ -40,7 +33,6 @@ public class PlayerControl : MonoBehaviour
         { 
             extraJumps = 1;
         }
-
 
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps>0) {
             rb.velocity = Vector2.up * jumpForce;
@@ -71,8 +63,6 @@ public class PlayerControl : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(moveInput));
-       
-       
 
         //Character flip
         if (isfacingRight ==  false && moveInput>0 ) {

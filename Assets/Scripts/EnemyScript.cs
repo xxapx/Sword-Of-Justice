@@ -12,8 +12,6 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] float agroRange;
 
-
-
     //Move,Edge & Wall Detection
     bool isfacingRight;
 
@@ -24,8 +22,6 @@ public class EnemyScript : MonoBehaviour
     public float moveSpeed;
 
     public float velocityX;
-    
-    
 
     void Start()
     {     
@@ -36,8 +32,7 @@ public class EnemyScript : MonoBehaviour
 
 
     private void FixedUpdate()
-    {
-        
+    {        
         velocityX = moveSpeed;
 
         if(isfacingRight == true)
@@ -47,8 +42,7 @@ public class EnemyScript : MonoBehaviour
 
         //Enemy move
         rb2d.velocity = new Vector2(velocityX, rb2d.velocity.y);
-        
-
+       
         //distance from player
         float distToPlayer = Mathf.Abs(transform.position.x - player.position.x);
         
@@ -57,14 +51,10 @@ public class EnemyScript : MonoBehaviour
         
         if (distToPlayer < agroRange && val ==false)
         {
-
-            
             ChasePlayer(moveSpeed);
-            
         }
         else if(isHittingWall() || isNearEdge())
         {
-            
             stopChasingPlayer();
             if (isfacingRight == false)
             {
@@ -86,7 +76,6 @@ public class EnemyScript : MonoBehaviour
         animator.SetBool("Chase", true);
         if (transform.position.x < player.position.x)
         {
-            
             rb2d.velocity = new Vector2(chaseSpeed, 0);
             
             if (isfacingRight == true)
@@ -96,7 +85,6 @@ public class EnemyScript : MonoBehaviour
         }
         else if (transform.position.x > player.position.x)
         {
-
             rb2d.velocity = new Vector2(-chaseSpeed, 0);
 
             if (isfacingRight == false)
@@ -104,12 +92,10 @@ public class EnemyScript : MonoBehaviour
                 flip();
             }
         }
-        
     }
 
     public void stopChasingPlayer()
     {
-        
         rb2d.velocity = new Vector2(velocityX, 0);
         animator.SetBool("Chase", false);
     }
@@ -144,8 +130,8 @@ public class EnemyScript : MonoBehaviour
         else { 
             val = false;
         }
-        
         return val;
+
     }
 
     //Check if enemy is near the edge
@@ -183,7 +169,6 @@ public class EnemyScript : MonoBehaviour
         animator.SetBool("Death", true);
 
         Invoke("DestroyEnemy", 0.3f);
-        
         
     }
     

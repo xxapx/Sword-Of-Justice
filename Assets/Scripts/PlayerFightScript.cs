@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class PlayerFightScript : MonoBehaviour
 {
-
     [SerializeField] Animator animatorAttack;
 
     public AudioSource Sword;
-
 
     public Transform AttackPoint;
     public float attackRange = 0.5f;
@@ -20,7 +18,7 @@ public class PlayerFightScript : MonoBehaviour
         if(Time.time >= nextAttackTime){
             if(Input.GetKeyDown(KeyCode.Mouse0)){
                 Attack();
-                nextAttackTime = Time.time + 1f/attackRate;
+                nextAttackTime = Time.time + 1f/attackRate; //Attack Delay
             }
         }
     }
@@ -29,7 +27,6 @@ public class PlayerFightScript : MonoBehaviour
         animatorAttack.SetTrigger("Attack");
         Sword.Play();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
-
 
         foreach(Collider2D enemy in hitEnemies){
             enemy.GetComponent<EnemyScript>().takeDamage();
