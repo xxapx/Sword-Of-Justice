@@ -341,7 +341,6 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   LevelFinishMenu: {fileID: 0}
   PauseButton: {fileID: 0}
-  Player: {fileID: 0}
 --- !u!1 &260659028
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,8 +398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u03A0\u03B1\u03C0\u03B1\u03B4\u03CC\u03C0\u03BF\u03C5\u03BB\u03BF\u03C2
-    \u0391\u03BD\u03C4\u03CE\u03BD\u03B9\u03BF\u03C2   cs04617"
+  m_text: Papadopoulos Antonios   cs04617
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
