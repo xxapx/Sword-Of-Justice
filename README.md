@@ -16,3 +16,8 @@ ______________________
 ______________________
 
 You can play the game by downloading from [Releases](https://github.com/xxapx/Sword-Of-Justice/releases)
+
+______________________
+______________________
+
+*As of now the game is only available on windows. I am planning on releasing a version for android soon.*
