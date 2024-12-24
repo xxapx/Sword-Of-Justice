@@ -4,7 +4,7 @@ ______________________
 ______________________
 
 Assignment for the Multimedia Technology course, of the Informatics Department of the University of Western Macedonia.
-We were asked to make a game of our choise using Unity.
+We were asked to make a game of our choise for the Windows OS using Unity.
 I decided to go for a basic 2D platformer.
 
 ______________________
