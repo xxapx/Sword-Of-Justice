@@ -11,3 +11,8 @@ ______________________
 ______________________
 
 The goal of the game is to kill all the monsters and collect the magic stones to save the world.
+
+______________________
+______________________
+
+You can play the game by downloading from [Releases](https://github.com/xxapx/Sword-Of-Justice/releases)
